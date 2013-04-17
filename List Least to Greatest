@@ -26,6 +26,11 @@ def Insertionsort(My_List):
     for i in range(1, len(My_List)):
         save = My_List[i]
         j = i
+        
+        # Goes through list, taking first element
+        # and compares it to next element,
+        # adding the smaller to the list until reaching end of list
+        
         while j > 0 and My_List[j - 1] > save:
             My_List[j] = My_List[j - 1]
             j -= 1
@@ -49,6 +54,10 @@ def Selectionsort(My_List):
 def Mergesort (My_List):
     def merge(x, y):
         result = []
+
+        # Appends the smaller elements of arrays x and y
+        # and resets the values of x and y
+        
         while x and y:
             if x[0] < y[0]:
                 result.append(x[0])
@@ -56,13 +65,21 @@ def Mergesort (My_List):
             else:
                 result.append(y[0])
                 y = y[1:]
+                
+        # Merges the reset lists of x and y to the result array
+        
         if x:
             result.extend(x)
         else:
             result.extend(y)
         return result
+
+    # Sets x to last half of list
+    # Sets y to first half of list
+    # Recursively divides lists to the size of one element
+    
     if len(My_List) > 1:
-        mid = len(My_List) // 2
+        mid = len(My_List) / 2
         x = My_List[mid:]
         y = My_List[:mid]
         if len(x) > 1:
