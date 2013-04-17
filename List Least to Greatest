@@ -56,7 +56,7 @@ def Mergesort (My_List):
         result = []
 
         # Appends the smaller elements of arrays x and y
-        # and resets the values of x and y
+        # and resets the lists of x and y
         
         while x and y:
             if x[0] < y[0]:
