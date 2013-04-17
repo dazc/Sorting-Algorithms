@@ -1,0 +1,74 @@
+# Dazmon Callaham and Kyle Zercher
+# Python 2.7.3
+# Feel free to use this however you want
+# Each group of sorting algorithms will return Least to Greatest integers
+
+# Keeps list of numbers from input
+
+stringList = list(input("Enter a set of numbers: "))
+My_List = [int(x) for x in stringList]
+
+# Bubble Sort
+
+def Bubblesort(My_List):
+    length = len(My_List)        
+    for x in range(length):
+        for y in range(length-1):
+            if (My_List[x] < My_List[y]):
+                temp = My_List[x]
+                My_List[x] = My_List[y]
+                My_List[y] = temp
+    return My_List
+
+# Insertion Sort Algorithm
+
+def Insertionsort(My_List):
+    for i in range(1, len(My_List)):
+        save = My_List[i]
+        j = i
+        while j > 0 and My_List[j - 1] > save:
+            My_List[j] = My_List[j - 1]
+            j -= 1
+        My_List[j] = save
+    return My_List
+
+# Selection Sort Algorithm
+
+def Selectionsort(My_List):
+    length = len(My_List)
+    for x in range(0, length):
+        min = x
+        for y in range(x + 1, length):
+            if My_List[y] < My_List[min]:
+                min = y
+        My_List[x], My_List[min] = My_List[min], My_List[x]
+    return My_List
+
+# Merge Sort Algorithm
+
+def Mergesort (My_List):
+    def merge(x, y):
+        result = []
+        while x and y:
+            if x[0] < y[0]:
+                result.append(x[0])
+                x = x[1:]
+            else:
+                result.append(y[0])
+                y = y[1:]
+        if x:
+            result.extend(x)
+        else:
+            result.extend(y)
+        return result
+    if len(My_List) > 1:
+        mid = len(My_List) // 2
+        x = My_List[mid:]
+        y = My_List[:mid]
+        if len(x) > 1:
+            x = Mergesort(x)
+        if len(y) > 1:
+            y = Mergesort(y)
+        return merge(x, y)
+    else:
+        return My_List
